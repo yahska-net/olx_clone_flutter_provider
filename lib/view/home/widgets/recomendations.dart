@@ -18,7 +18,9 @@ class FreshRecomendations extends StatelessWidget {
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
           ),
         ),
-        SizedBox(
+        Container(
+          padding: EdgeInsets.all(10),
+          color: Colors.white,
           height: 700,
           child: GridView.builder(
             physics: NeverScrollableScrollPhysics(),
