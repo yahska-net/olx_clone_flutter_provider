@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:olx/view/core/colors.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,7 @@ class LoginScreen extends StatelessWidget {
                               ),
                             ),
                             child: Text(
-                              "Login",
+                              "Sign Up",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 17,
@@ -72,7 +72,9 @@ class LoginScreen extends StatelessWidget {
                           width: double.infinity,
                           child: ElevatedButton(
                             onPressed: () {
-                              Navigator.of(context).pushNamed("/sign_up");
+                              Navigator.of(
+                                context,
+                              ).pushReplacementNamed("/login");
                             },
                             style: ButtonStyle(
                               shape: WidgetStatePropertyAll(
@@ -85,7 +87,7 @@ class LoginScreen extends StatelessWidget {
                               ),
                             ),
                             child: Text(
-                              "Sign Up",
+                              "Log In",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
