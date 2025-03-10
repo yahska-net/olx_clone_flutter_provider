@@ -4,6 +4,7 @@ import 'package:olx/view/add_post/add_post.dart';
 import 'package:olx/view/core/colors.dart';
 import 'package:olx/view/home/home_screen.dart';
 import 'package:olx/view/login/login_screen.dart';
+import 'package:olx/view/main_screen/main_screen.dart';
 import 'package:olx/view/sign_up/sign_up_screen.dart';
 import 'package:olx/view/splash_screen/splash_screen.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: "/",
         routes: {
-          "/": (context) => HomeScreen(),
+          "/": (context) => MainScreen(),
           "/splash": (context) => SplashScreen(),
           "/login": (context) => LoginScreen(),
           "/sign_up": (context) => SignUpScreen(),
