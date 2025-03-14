@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:olx/controls/bottom_nav_bar/bottom_nav_bar_provider.dart';
+import 'package:olx/view/add_post/add_post.dart';
 import 'package:olx/view/sign_up/sign_up_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:olx/view/home/home_screen.dart';
@@ -8,7 +9,7 @@ class MainScreen extends StatelessWidget {
   final List<Widget> _screens = [
     HomeScreen(),
     Center(child: Text("Chats")),
-    Center(child: Text("Sell")),
+    AddPost(),
     Center(child: Text("My Ads")),
     SignUpScreen(),
   ];
