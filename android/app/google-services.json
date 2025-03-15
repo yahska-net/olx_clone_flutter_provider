@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "821342385580",
+    "project_id": "haca-olx-clone",
+    "storage_bucket": "haca-olx-clone.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:821342385580:android:0391df3d93d2384c223609",
+        "android_client_info": {
+          "package_name": "com.example.olx"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALVIkZmDdrlZrimxaG8thwl9QKzO3olQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

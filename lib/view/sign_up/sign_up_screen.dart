@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:olx/controls/sign_up/sign_up_provider.dart';
 import 'package:olx/view/core/colors.dart';
+import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({super.key});
+  SignUpScreen({super.key});
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    final signUpProvider = Provider.of<SignUpProvider>(context);
     return Scaffold(
       body: SafeArea(
         child: SizedBox(
@@ -19,13 +23,20 @@ class SignUpScreen extends StatelessWidget {
               Expanded(
                 child: Container(
                   color: AppColors.greenDark,
-                  padding: EdgeInsets.symmetric(vertical: 70, horizontal: 30),
+                  padding: EdgeInsets.symmetric(vertical: 40, horizontal: 30),
                   child: Form(
+                    key: formKey,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         TextFormField(
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Enter Email.';
+                            }
+                            return null;
+                          },
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.email_outlined),
                             hintText: "Email",
@@ -36,6 +47,12 @@ class SignUpScreen extends StatelessWidget {
                         ),
                         TextFormField(
                           obscureText: true,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter password';
+                            }
+                            return null;
+                          },
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.password_outlined),
                             hintText: "Password",
@@ -47,7 +64,15 @@ class SignUpScreen extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if (signUpProvider.validateForm(
+                                formKey.currentState,
+                              )) {
+                                print(
+                                  "Signup Successful: ${signUpProvider.email}",
+                                );
+                              }
+                            },
                             style: ButtonStyle(
                               shape: WidgetStatePropertyAll(
                                 RoundedRectangleBorder(

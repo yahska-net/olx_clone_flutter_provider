@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:olx/view/core/colors.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
   Future<void> _initializeApp(BuildContext context) async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 5));
     if (context.mounted) {
       Navigator.pushReplacementNamed(context, "/");
     }
@@ -16,8 +14,16 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     _initializeApp(context);
     return Scaffold(
-      backgroundColor: AppColors.greenDark,
-      body: Center(child: SvgPicture.asset("lib/assets/logos/OLX_new.svg")),
+      backgroundColor: Color(0xFF33fad9),
+      body: Center(
+        child: Image(
+          image: AssetImage("lib/assets/logos/OLX anime.gif"),
+          width: 180,
+          height: 180,
+          fit: BoxFit.contain,
+          colorBlendMode: BlendMode.color,
+        ),
+      ),
     );
   }
 }
