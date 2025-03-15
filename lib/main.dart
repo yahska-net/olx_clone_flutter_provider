@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:olx/controls/bottom_nav_bar/bottom_nav_bar_provider.dart';
+import 'package:olx/controls/login/login_provider.dart';
 import 'package:olx/controls/sign_up/sign_up_provider.dart';
 import 'package:olx/firebase_options.dart';
 import 'package:olx/view/add_post/add_post.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => NavigationProvider()),
         ChangeNotifierProvider(create: (context) => SignUpProvider()),
+        ChangeNotifierProvider(create: (context) => LoginProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
