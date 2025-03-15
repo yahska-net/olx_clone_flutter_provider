@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:olx/controls/sign_up/sign_up_provider.dart';
 import 'package:olx/view/core/colors.dart';
 import 'package:provider/provider.dart';
@@ -7,6 +9,10 @@ import 'package:provider/provider.dart';
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final _firebaseAuth = FirebaseAuth.instance;
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +37,8 @@ class SignUpScreen extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         TextFormField(
+                          controller: _emailController,
+                          keyboardType: TextInputType.emailAddress,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Enter Email.';
@@ -46,6 +54,7 @@ class SignUpScreen extends StatelessWidget {
                           ),
                         ),
                         TextFormField(
+                          controller: _passwordController,
                           obscureText: true,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -64,13 +73,58 @@ class SignUpScreen extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
-                            onPressed: () {
+                            onPressed: () async {
+                              // String message = "";
                               if (signUpProvider.validateForm(
                                 formKey.currentState,
                               )) {
-                                print(
-                                  "Signup Successful: ${signUpProvider.email}",
-                                );
+                                try {
+                                  await _firebaseAuth
+                                      .createUserWithEmailAndPassword(
+                                        email: _emailController.text.trim(),
+                                        password:
+                                            _passwordController.text.trim(),
+                                      );
+                                  Future.delayed(Duration(seconds: 3), () {
+                                    if (context.mounted) {
+                                      Navigator.pushReplacementNamed(
+                                        context,
+                                        "/",
+                                      );
+                                    }
+                                  });
+                                } on FirebaseAuthException catch (e) {
+                                  String message = "An error occurred";
+                                  if (e.code == "weak-password") {
+                                    message =
+                                        'The password provided is too weak.';
+                                  } else if (e.code == 'email-already-in-use') {
+                                    message =
+                                        'An account already exists with that email.';
+                                  }
+
+                                  if (context.mounted) {
+                                    Fluttertoast.showToast(
+                                      msg: message,
+                                      toastLength: Toast.LENGTH_LONG,
+                                      gravity: ToastGravity.SNACKBAR,
+                                      backgroundColor: Colors.black54,
+                                      textColor: Colors.white,
+                                      fontSize: 14.0,
+                                    );
+                                  }
+                                } catch (e) {
+                                  if (context.mounted) {
+                                    Fluttertoast.showToast(
+                                      msg: "Failed: $e",
+                                      toastLength: Toast.LENGTH_LONG,
+                                      gravity: ToastGravity.SNACKBAR,
+                                      backgroundColor: Colors.black54,
+                                      textColor: Colors.white,
+                                      fontSize: 14.0,
+                                    );
+                                  }
+                                }
                               }
                             },
                             style: ButtonStyle(
