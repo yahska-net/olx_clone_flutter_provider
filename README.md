@@ -12,28 +12,6 @@ A Flutter-based OLX Clone with Firebase Authentication and Provider for state ma
 
 ⸻
 
-📂 Project Structure
-
-/lib
-│── /controls
-│ ├── bottom_nav_bar_provider.dart
-│ ├── auth_provider.dart
-│── /view
-│ ├── /home
-│ │ ├── home_screen.dart
-│ ├── /account
-│ │ ├── account_screen.dart
-│ ├── /add_post
-│ │ ├── add_post.dart
-│ ├── /sign_up
-│ │ ├── sign_up_screen.dart
-│ ├── login_screen.dart
-│ ├── main_screen.dart
-│ ├── auth_wrapper.dart
-│── main.dart
-
-⸻
-
 🔧 Installation
 
 1️⃣ Clone the repo
