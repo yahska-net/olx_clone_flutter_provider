@@ -1,8 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:olx/controls/login/login_provider.dart';
+import 'package:olx/controls/auth/firebase_auth.dart';
 import 'package:olx/view/core/colors.dart';
 import 'package:provider/provider.dart';
 
@@ -11,14 +9,12 @@ class LoginScreen extends StatelessWidget {
 
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
-  final _firebaseAuth = FirebaseAuth.instance;
-
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final loginProvider = Provider.of<LoginProvider>(context);
+    final authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       body: SafeArea(
         child: SizedBox(
@@ -67,17 +63,28 @@ class LoginScreen extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child:
-                              loginProvider.isLoading
-                                  ? SizedBox(
-                                    width: 10,
-                                    height: 10,
+                              authProvider.isLoading
+                                  ? ElevatedButton(
+                                    onPressed: () {},
+                                    style: ButtonStyle(
+                                      shape: WidgetStatePropertyAll(
+                                        RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            5,
+                                          ),
+                                        ),
+                                      ),
+                                      backgroundColor: WidgetStatePropertyAll(
+                                        Colors.white,
+                                      ),
+                                    ),
                                     child: CircularProgressIndicator(),
                                   )
                                   : ElevatedButton(
                                     onPressed: () async {
                                       if (loginFormKey.currentState!
                                           .validate()) {
-                                        loginProvider.login(
+                                        authProvider.login(
                                           _emailController.text.trim(),
                                           _passController.text.trim(),
                                           context,
