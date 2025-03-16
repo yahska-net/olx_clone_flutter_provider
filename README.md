@@ -1,16 +1,87 @@
-# olx
+🚀 OLX Clone - Flutter App
 
-A new Flutter project.
+A Flutter-based OLX Clone with Firebase Authentication and Provider for state management.
 
-## Getting Started
+📌 Features
 
-This project is a starting point for a Flutter application.
+✅ User Authentication (Sign Up, Login, Logout)
+✅ Firebase Integration (Firebase Auth)
+✅ Bottom Navigation Bar (Home, Chats, Sell, My Ads, Account)
+✅ Provider for State Management
+✅ Dynamic UI Based on Authentication
 
-A few resources to get you started if this is your first Flutter project:
+⸻
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+📂 Project Structure
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+/lib
+│── /controls
+│ ├── bottom_nav_bar_provider.dart
+│ ├── auth_provider.dart
+│── /view
+│ ├── /home
+│ │ ├── home_screen.dart
+│ ├── /account
+│ │ ├── account_screen.dart
+│ ├── /add_post
+│ │ ├── add_post.dart
+│ ├── /sign_up
+│ │ ├── sign_up_screen.dart
+│ ├── login_screen.dart
+│ ├── main_screen.dart
+│ ├── auth_wrapper.dart
+│── main.dart
+
+⸻
+
+🔧 Installation
+
+1️⃣ Clone the repo
+
+git clone https://github.com/akshaykumarkm/olx_clone_flutter_provider.git
+cd olx_clone_flutter_provider
+
+2️⃣ Install dependencies
+
+flutter pub get
+
+3️⃣ Setup Firebase
+• Create a Firebase project
+• Download google-services.json (Android) & GoogleService-Info.plist (iOS)
+• Place them in android/app/ and ios/Runner/
+
+4️⃣ Run the app
+
+flutter run
+
+⸻
+
+📜 Authentication Flow
+
+1️⃣ User opens the app → AuthWrapper checks authentication state
+2️⃣ If logged in → Redirects to MainScreen
+3️⃣ If not logged in → Shows LoginScreen
+4️⃣ User can Sign Up / Login using Firebase Auth
+
+⸻
+
+🛠️ Tech Stack
+• Flutter
+• Firebase Authentication
+• Provider (State Management)
+• Dart
+• Material UI
+
+⸻
+
+📝 Contributors
+
+👤 @akshaykumarkm - GitHub Profile
+
+⸻
+
+📜 License
+
+This project is licensed under the MIT License.
+
+⸻
