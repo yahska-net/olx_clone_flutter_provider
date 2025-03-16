@@ -1,8 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:olx/controls/login/login_provider.dart';
+import 'package:olx/controls/auth/firebase_auth.dart';
 import 'package:olx/view/core/colors.dart';
 import 'package:provider/provider.dart';
 
@@ -11,14 +9,12 @@ class LoginScreen extends StatelessWidget {
 
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
-  final _firebaseAuth = FirebaseAuth.instance;
-
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final loginProvider = Provider.of<LoginProvider>(context);
+    final authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       body: SafeArea(
         child: SizedBox(
@@ -66,58 +62,55 @@ class LoginScreen extends StatelessWidget {
                         ),
                         SizedBox(
                           width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: () async {
-                              String message = "";
-                              if (loginProvider.validateLoginForm(
-                                loginFormKey.currentState,
-                              )) {
-                                try {
-                                  await _firebaseAuth
-                                      .signInWithEmailAndPassword(
-                                        email: _emailController.text.trim(),
-                                        password: _passController.text.trim(),
-                                      );
-                                  if (context.mounted) {
-                                    Navigator.pushNamed(context, "/");
-                                  }
-                                } on FirebaseAuthException catch (e) {
-                                  if (e.code == 'INVALID_LOGIN_CREDENTIALS') {
-                                    message = 'Invalid login credentials.';
-                                  } else {
-                                    message = e.code;
-                                  }
-                                  if (context.mounted) {
-                                    Fluttertoast.showToast(
-                                      msg: message,
-                                      toastLength: Toast.LENGTH_LONG,
-                                      gravity: ToastGravity.SNACKBAR,
-                                      backgroundColor: Colors.black54,
-                                      textColor: Colors.white,
-                                      fontSize: 14.0,
-                                    );
-                                  }
-                                }
-                              }
-                            },
-                            style: ButtonStyle(
-                              shape: WidgetStatePropertyAll(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                              ),
-                              backgroundColor: WidgetStatePropertyAll(
-                                Colors.white,
-                              ),
-                            ),
-                            child: Text(
-                              "Login",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 17,
-                              ),
-                            ),
-                          ),
+                          child:
+                              authProvider.isLoading
+                                  ? ElevatedButton(
+                                    onPressed: () {},
+                                    style: ButtonStyle(
+                                      shape: WidgetStatePropertyAll(
+                                        RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            5,
+                                          ),
+                                        ),
+                                      ),
+                                      backgroundColor: WidgetStatePropertyAll(
+                                        Colors.white,
+                                      ),
+                                    ),
+                                    child: CircularProgressIndicator(),
+                                  )
+                                  : ElevatedButton(
+                                    onPressed: () async {
+                                      if (loginFormKey.currentState!
+                                          .validate()) {
+                                        authProvider.login(
+                                          _emailController.text.trim(),
+                                          _passController.text.trim(),
+                                          context,
+                                        );
+                                      }
+                                    },
+                                    style: ButtonStyle(
+                                      shape: WidgetStatePropertyAll(
+                                        RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            5,
+                                          ),
+                                        ),
+                                      ),
+                                      backgroundColor: WidgetStatePropertyAll(
+                                        Colors.white,
+                                      ),
+                                    ),
+                                    child: Text(
+                                      "Login",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 17,
+                                      ),
+                                    ),
+                                  ),
                         ),
                         SizedBox(height: 5),
                         SizedBox(
