@@ -1,27 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:olx/controls/auth/firebase_auth.dart';
 import 'package:olx/controls/bottom_nav_bar/bottom_nav_bar_provider.dart';
+import 'package:olx/view/account/account_screen.dart';
 import 'package:olx/view/add_post/add_post.dart';
-import 'package:olx/view/sign_up/sign_up_screen.dart';
+import 'package:olx/view/login/login_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:olx/view/home/home_screen.dart';
 
 class MainScreen extends StatelessWidget {
-  final List<Widget> _screens = [
-    HomeScreen(),
-    Center(child: Text("Chats")),
-    AddPost(),
-    Center(child: Text("My Ads")),
-    SignUpScreen(),
-  ];
-
-  MainScreen({super.key});
+  const MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
+    final List<Widget> screens = [
+      HomeScreen(),
+      Center(child: Text("Chats")),
+      AddPost(),
+      Center(child: Text("My Ads")),
+      authProvider.isLoggedIn ? AccountScreen() : LoginScreen(),
+    ];
     return Scaffold(
       body: Consumer<NavigationProvider>(
         builder: (context, provider, child) {
-          return _screens[provider.selectedIndex];
+          return screens[provider.selectedIndex];
         },
       ),
       bottomNavigationBar: Consumer<NavigationProvider>(
