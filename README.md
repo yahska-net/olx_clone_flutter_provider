@@ -2,6 +2,10 @@
 
 A Flutter-based OLX Clone with Firebase Authentication and Provider for state management.
 
+![Simulator Screenshot - iPhone 15 Pro Max - 2025-03-08 at 21 37 30](https://github.com/user-attachments/assets/28a214e8-8662-44b9-853a-27dd61b06d2b)
+
+![Simulator Screenshot - iPhone 15 Pro Max - 2025-03-15 at 00 01 18](https://github.com/user-attachments/assets/9df22cab-4e92-44d8-8bb4-df4b84e80cbc)  
+
 📌 Features
 
 ✅ User Authentication (Sign Up, Login, Logout)
