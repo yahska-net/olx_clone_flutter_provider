@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:olx/view/home/widgets/browse_categories.dart';
-import 'package:olx/view/home/widgets/recomendations.dart';
-import 'package:olx/view/home/widgets/search_bar.dart';
+import 'package:olx/view/screens/home/widgets/browse_categories.dart';
+import 'package:olx/view/screens/home/widgets/recomendations.dart';
+import 'package:olx/view/screens/home/widgets/search_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

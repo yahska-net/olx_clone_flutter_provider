@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:olx/controls/auth/firebase_auth.dart';
+import 'package:olx/controller/auth/firebase_auth.dart';
 import 'package:olx/view/core/colors.dart';
 import 'package:provider/provider.dart';
 

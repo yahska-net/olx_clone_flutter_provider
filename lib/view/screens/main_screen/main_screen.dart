@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:olx/controls/auth/firebase_auth.dart';
-import 'package:olx/controls/bottom_nav_bar/bottom_nav_bar_provider.dart';
-import 'package:olx/view/account/account_screen.dart';
-import 'package:olx/view/add_post/add_post.dart';
-import 'package:olx/view/login/login_screen.dart';
+import 'package:olx/controller/auth/firebase_auth.dart';
+import 'package:olx/controller/bottom_nav_bar/bottom_nav_bar_provider.dart';
+import 'package:olx/view/screens/account/account_screen.dart';
+import 'package:olx/view/screens/add_post/add_post.dart';
+import 'package:olx/view/screens/login/login_screen.dart';
 import 'package:provider/provider.dart';
-import 'package:olx/view/home/home_screen.dart';
+import 'package:olx/view/screens/home/home_screen.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
