@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:olx/controls/auth/firebase_auth.dart';
+import 'package:olx/controller/auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 
 class AccountScreen extends StatelessWidget {

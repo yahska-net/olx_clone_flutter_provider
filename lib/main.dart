@@ -1,14 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:olx/controls/auth/firebase_auth.dart';
-import 'package:olx/controls/bottom_nav_bar/bottom_nav_bar_provider.dart';
+import 'package:olx/controller/auth/firebase_auth.dart';
+import 'package:olx/controller/bottom_nav_bar/bottom_nav_bar_provider.dart';
 import 'package:olx/firebase_options.dart';
-import 'package:olx/view/add_post/add_post.dart';
+import 'package:olx/view/screens/add_post/add_post.dart';
 import 'package:olx/view/core/colors.dart';
-import 'package:olx/view/login/login_screen.dart';
-import 'package:olx/view/main_screen/main_screen.dart';
-import 'package:olx/view/sign_up/sign_up_screen.dart';
-import 'package:olx/view/splash_screen/splash_screen.dart';
+import 'package:olx/view/screens/login/login_screen.dart';
+import 'package:olx/view/screens/main_screen/main_screen.dart';
+import 'package:olx/view/screens/sign_up/sign_up_screen.dart';
+import 'package:olx/view/screens/splash_screen/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() async {

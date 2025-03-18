@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:olx/controls/bottom_nav_bar/bottom_nav_bar_provider.dart';
+import 'package:olx/controller/bottom_nav_bar/bottom_nav_bar_provider.dart';
 import 'package:provider/provider.dart';
 
 class BottomNavBarWidget extends StatelessWidget {
