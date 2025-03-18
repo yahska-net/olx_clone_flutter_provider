@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         leading: Padding(
           padding: const EdgeInsets.only(left: 15),
-          child: SvgPicture.asset("lib/assets/logos/download.svg"),
+          child: SvgPicture.asset("lib/view/assets/logos/download.svg"),
         ),
         actions: [
           Icon(Icons.pin_drop_outlined),

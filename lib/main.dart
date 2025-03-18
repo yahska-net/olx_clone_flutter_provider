@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:olx/controller/auth/firebase_auth.dart';
 import 'package:olx/controller/bottom_nav_bar/bottom_nav_bar_provider.dart';
+import 'package:olx/controller/posts/post_provider.dart';
 import 'package:olx/firebase_options.dart';
 import 'package:olx/view/screens/add_post/add_post.dart';
 import 'package:olx/view/core/colors.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => NavigationProvider()),
         ChangeNotifierProvider(create: (context) => AuthProvider()),
+        ChangeNotifierProvider(create: (context) => PostProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
