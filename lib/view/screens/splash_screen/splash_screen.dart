@@ -17,7 +17,7 @@ class SplashScreen extends StatelessWidget {
       backgroundColor: Color(0xFF33fad9),
       body: Center(
         child: Image(
-          image: AssetImage("lib/assets/logos/OLX anime.gif"),
+          image: AssetImage("lib/view/assets/logos/OLX anime.gif"),
           width: 180,
           height: 180,
           fit: BoxFit.contain,
