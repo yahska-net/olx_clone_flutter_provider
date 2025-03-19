@@ -25,7 +25,12 @@ class FreshRecomendations extends StatelessWidget {
           stream: postProvider.fetchProducts(),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData) {
-              return Center(child: CircularProgressIndicator());
+              return Center(
+                child: ElevatedButton(
+                  onPressed: () => Navigator.pushNamed(context, "/login"),
+                  child: Text("Lgin Now"),
+                ),
+              );
             }
 
             var products = snapshot.data!.docs;
@@ -36,7 +41,7 @@ class FreshRecomendations extends StatelessWidget {
             return Container(
               padding: EdgeInsets.all(10),
               color: Colors.white,
-              height: 280 * (products.length.toDouble() / 2),
+              height: 300 * (products.length.toDouble() / 2),
               child: GridView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: products.length,

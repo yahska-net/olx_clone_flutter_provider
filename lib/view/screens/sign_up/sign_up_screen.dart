@@ -21,7 +21,7 @@ class SignUpScreen extends StatelessWidget {
           child: Column(
             children: [
               Expanded(
-                child: SvgPicture.asset("lib/assets/logos/download.svg"),
+                child: SvgPicture.asset("lib/view/assets/logos/download.svg"),
               ),
               Expanded(
                 child: Container(
